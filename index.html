@@ -202,7 +202,6 @@
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
-    const hint = document.getElementById("hint");
     const sure = document.getElementById("sure");
 
     /* ---------- ROTATING "ARE YOU SURE" MESSAGES ---------- */
@@ -337,7 +336,6 @@
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";
       sure.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
@@ -346,6 +344,7 @@
   </script>
 </body>
 </html>
+
 
 
 

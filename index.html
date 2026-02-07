@@ -105,6 +105,16 @@
       opacity: .7;
     }
 
+    /* NEW: "Are you sure?" message */
+    .sure {
+      display: none;
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ff1f68;
+      animation: pop .25s ease;
+    }
+
     .result {
       display: none;
       margin-top: 18px;
@@ -181,6 +191,9 @@
     <!-- HINT -->
     <div class="hint" id="hint">“No” seems a bit shy 😈</div>
 
+    <!-- NEW: Are you sure message -->
+    <div class="sure" id="sure">Are you sure? 😏</div>
+
     <section class="result" id="result">
       <h2>YAY! 🎉</h2>
       <img
@@ -197,6 +210,7 @@
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
     const hint = document.getElementById("hint");
+    const sure = document.getElementById("sure");
 
     /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
@@ -287,12 +301,20 @@
       if (d < 140) moveNo(e.clientX, e.clientY);
     });
 
-    noBtn.addEventListener("click", e => e.preventDefault());
+    /* NEW: show "Are you sure?" when they try to click No */
+    noBtn.addEventListener("click", e => {
+      e.preventDefault();
+      sure.style.display = "block";
+      setTimeout(() => {
+        sure.style.display = "none";
+      }, 1200);
+    });
 
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
+      sure.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
@@ -300,7 +322,3 @@
   </script>
 </body>
 </html>
-
-
-
-
